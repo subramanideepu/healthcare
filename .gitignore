@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+vendor/
+*/node_modules/
+*/vendor/
+
+# Build artifacts
+dist/
+*/dist/
+
+# Environment files
+.env
+*/.env
+!.env.example
+
+# Logs and databases
+*.log
+*.sqlite
+leads_backup.json
+*/leads_backup.json
+
+# OS and Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

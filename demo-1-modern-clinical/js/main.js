@@ -1,5 +1,6 @@
 /**
- * Adhira Wellness - Demo 1: Modern Clinical
+ * Aadhira Wellness Physio • Rehab Center - Chennai
+ * Dr. Santhosh Balaji .K (BPT MIAP KTP)
  * Client Interaction Scripts
  */
 
@@ -63,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (questionBtn) {
       questionBtn.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
-        // Close others
         faqItems.forEach(other => other.classList.remove('active'));
         if (!isActive) {
           item.classList.add('active');
@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const date = document.getElementById('quickDate').value;
       const time = document.getElementById('quickTime').value;
 
-      // Scroll to full booking form and prefill
       const mainForm = document.getElementById('appointmentForm');
       if (mainForm) {
         const deptSelect = document.getElementById('appointmentDepartment');
@@ -114,19 +113,60 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const name = document.getElementById('patientName')?.value || 'Valued Patient';
       const phone = document.getElementById('patientPhone')?.value || '';
-      const dept = document.getElementById('appointmentDepartment')?.value || 'General Physiotherapy';
+      const visitType = document.getElementById('visitType')?.value || 'Clinic Visit';
+      const dept = document.getElementById('appointmentDepartment')?.value || 'Physiotherapy';
       const date = document.getElementById('appointmentDate')?.value || 'Selected Date';
+      const time = document.getElementById('appointmentTime')?.value || 'Preferred Time';
+      const painLevel = document.getElementById('painScaleSlider')?.value || '5';
+      const notes = document.getElementById('patientNotes')?.value || '';
 
       // Generate Reference Code
       const randomRef = 'ADH-' + Math.floor(100000 + Math.random() * 900000);
       if (modalRefNumber) modalRefNumber.textContent = randomRef;
       if (modalMessage) {
-        modalMessage.innerHTML = `Thank you, <strong>${name}</strong>. Your clinical appointment request for <strong>${dept}</strong> on <strong>${date}</strong> has been logged. Our physiotherapy care coordinator will contact you at <strong>${phone}</strong> within 2 hours to confirm your assessment slot.`;
+        modalMessage.innerHTML = `Thank you, <strong>${name}</strong>. Your request for <strong>${dept} (${visitType})</strong> on <strong>${date}</strong> has been logged. Dr. Santhosh Balaji .K and our clinical team will contact you at <strong>${phone}</strong> on WhatsApp / Phone to confirm your appointment time.`;
       }
 
       if (successModal) {
         successModal.classList.add('active');
       }
+
+      // Also trigger direct WhatsApp sync option if on mobile
+      const whatsappText = `Hello Dr. Santhosh Balaji, I have requested an appointment at Aadhira Wellness.\nRef: ${randomRef}\nName: ${name}\nPhone: ${phone}\nType: ${visitType}\nService: ${dept}\nDate: ${date} (${time})\nPain Level: ${painLevel}/10\nNotes: ${notes}`;
+      
+      // Send directly to simple Email handler (send_mail.php)
+      fetch('send_mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reference_id: randomRef,
+          patient_name: name,
+          patient_phone: phone,
+          visit_type: visitType,
+          department: dept,
+          preferred_date: date,
+          preferred_time: time,
+          pain_level: painLevel,
+          medical_history: notes
+        })
+      }).catch(err => {
+        // Fallback for root path
+        fetch('../send_mail.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reference_id: randomRef,
+            patient_name: name,
+            patient_phone: phone,
+            visit_type: visitType,
+            department: dept,
+            preferred_date: date,
+            preferred_time: time,
+            pain_level: painLevel,
+            medical_history: notes
+          })
+        }).catch(e => console.warn('Mail send notice:', e));
+      });
 
       appointmentForm.reset();
       if (painValueDisplay) painValueDisplay.textContent = '5 / 10 (Moderate)';
@@ -154,12 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Pre-fill WhatsApp message trigger
+  // Pre-fill WhatsApp message trigger for Dr. Santhosh Balaji
   window.sendWhatsAppInquiry = (serviceName = '') => {
-    const phone = '919876543210';
-    let text = 'Hello Adhira Wellness, I would like to enquire about clinical physiotherapy assessment.';
+    const phone = '919080309274';
+    let text = 'Hello Dr. Santhosh Balaji, I would like to enquire about clinical physiotherapy / house visit at Aadhira Wellness.';
     if (serviceName) {
-      text = `Hello Adhira Wellness, I am interested in booking an assessment for: ${serviceName}. Please share available slots.`;
+      text = `Hello Dr. Santhosh Balaji, I am interested in booking an assessment for: ${serviceName}. Please share available slots.`;
     }
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
