@@ -44,6 +44,16 @@ export default function LocationMap() {
 
                 <div className="contact-detail-item">
                   <div className="contact-icon-bubble">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                  </div>
+                  <div className="contact-text-content">
+                    <h6>Official Email</h6>
+                    <p><a href="mailto:info@aadhirawellness.com">info@aadhirawellness.com</a></p>
+                  </div>
+                </div>
+
+                <div className="contact-detail-item">
+                  <div className="contact-icon-bubble">
                     <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                   </div>
                   <div className="contact-text-content">

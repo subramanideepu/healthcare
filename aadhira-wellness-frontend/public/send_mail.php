@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // ============================================================================
 // CONFIGURATION: Set the recipient email where you want leads to be delivered
 // ============================================================================
-$to_email = "aadhirawellness@gmail.com"; // <-- Enter your clinic email here
+$to_email = "info@aadhirawellness.com"; // Official Clinic Email
 $clinic_name = "Aadhira Wellness Physio • Rehab Center";
 
 // Read request body (JSON or Form POST)
@@ -174,9 +174,11 @@ $message .= '
 // Email headers
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-$headers .= "From: Aadhira Wellness <no-reply@" . ($_SERVER['SERVER_NAME'] ?? 'aadhirawellness.com') . ">\r\n";
+$headers .= "From: Aadhira Wellness <info@aadhirawellness.com>\r\n";
 if (!empty($patient_email)) {
     $headers .= "Reply-To: " . $patient_email . "\r\n";
+} else {
+    $headers .= "Reply-To: info@aadhirawellness.com\r\n";
 }
 $headers .= "X-Mailer: PHP/" . phpversion();
 
