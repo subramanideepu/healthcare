@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function AboutSection() {
   return (
@@ -7,7 +8,7 @@ export default function AboutSection() {
         <div className="about-grid">
           <div className="about-media">
             <div className="about-main-img">
-              <img src="/assets/images/clinic-room.jpg" alt="Aadhira Wellness Physio Rehab Center Chennai" />
+              <img src={getAssetUrl('assets/images/clinic-room.jpg')} alt="Aadhira Wellness Physio Rehab Center Chennai" />
             </div>
             <div className="about-overlay-card">
               <h4>Recover • Rehab • Rejoice</h4>

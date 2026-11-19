@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function PainChecker() {
   const [activeTab, setActiveTab] = useState('cervicalTab');
@@ -40,7 +41,7 @@ export default function PainChecker() {
             <div className="assessment-panel active" id="cervicalTab">
               <div className="condition-card">
                 <div className="condition-visual">
-                  <img src="/assets/images/spine-care.jpg" alt="Cervical and Neck Physiotherapy Treatment" />
+                  <img src={getAssetUrl('assets/images/spine-care.jpg')} alt="Cervical and Neck Physiotherapy Treatment" />
                 </div>
                 <div className="condition-info">
                   <h4>Cervical Radiculopathy & Postural Neck Strain</h4>
@@ -78,7 +79,7 @@ export default function PainChecker() {
             <div className="assessment-panel active" id="mfrTab">
               <div className="condition-card">
                 <div className="condition-visual">
-                  <img src="/assets/images/physio-treatment.jpg" alt="Myofascial Release Therapy" />
+                  <img src={getAssetUrl('assets/images/physio-treatment.jpg')} alt="Myofascial Release Therapy" />
                 </div>
                 <div className="condition-info">
                   <h4>Myofascial Release (MFR) Therapy & Muscle Recovery</h4>
@@ -116,7 +117,7 @@ export default function PainChecker() {
             <div className="assessment-panel active" id="lumbarTab">
               <div className="condition-card">
                 <div className="condition-visual">
-                  <img src="/assets/images/posture-check.jpg" alt="Lumbar Disc and Sciatica Treatment" />
+                  <img src={getAssetUrl('assets/images/posture-check.jpg')} alt="Lumbar Disc and Sciatica Treatment" />
                 </div>
                 <div className="condition-info">
                   <h4>Lumbar Disc Herniation, Spondylosis & Sciatica</h4>
@@ -154,7 +155,7 @@ export default function PainChecker() {
             <div className="assessment-panel active" id="kneeTab">
               <div className="condition-card">
                 <div className="condition-visual">
-                  <img src="/assets/images/sports-rehab.jpg" alt="Knee Osteoarthritis and Patellofemoral Pain" />
+                  <img src={getAssetUrl('assets/images/sports-rehab.jpg')} alt="Knee Osteoarthritis and Patellofemoral Pain" />
                 </div>
                 <div className="condition-info">
                   <h4>Knee Osteoarthritis, Patellofemoral Pain & Meniscal Tears</h4>
@@ -192,7 +193,7 @@ export default function PainChecker() {
             <div className="assessment-panel active" id="postopTab">
               <div className="condition-card">
                 <div className="condition-visual">
-                  <img src="/assets/images/joint-mobility.jpg" alt="Stroke & Fracture Rehabilitation" />
+                  <img src={getAssetUrl('assets/images/joint-mobility.jpg')} alt="Stroke & Fracture Rehabilitation" />
                 </div>
                 <div className="condition-info">
                   <h4>Stroke & Fracture Post-Cast Rehabilitation</h4>

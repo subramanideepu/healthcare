@@ -1,6 +1,7 @@
 import React from 'react';
 import QuickBookingBar from './QuickBookingBar';
 import DoctorProfile from './DoctorProfile';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function Hero({ onQuickSelect }) {
   return (
@@ -72,7 +73,7 @@ export default function Hero({ onQuickSelect }) {
 
           <div className="hero-media">
             <div className="hero-image-card">
-              <img src="/assets/images/hero-clinical.jpg" alt="Aadhira Wellness Physiotherapy Assessment in Chennai" />
+              <img src={getAssetUrl('assets/images/hero-clinical.jpg')} alt="Aadhira Wellness Physiotherapy Assessment in Chennai" />
             </div>
             {/* Floating Credibility Pills */}
             <div className="floating-pill top-right">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function Navbar() {
     <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="logo-wrapper" onClick={closeMobile} aria-label="Aadhira Wellness Physio Rehab Center">
-          <img src="/assets/images/logo.png" alt="Aadhira Wellness Physio Rehab Center" className="site-logo" />
+          <img src={getAssetUrl('assets/images/logo.png')} alt="Aadhira Wellness Physio Rehab Center" className="site-logo" />
         </Link>
 
         {/* Navigation Menu with React Router */}

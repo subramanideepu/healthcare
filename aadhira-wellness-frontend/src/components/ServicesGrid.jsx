@@ -1,11 +1,12 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function ServicesGrid() {
   const services = [
     {
       title: 'Myofascial Release (MFR) & Manual Therapy',
       badge: 'Core Specialty',
-      image: '/assets/images/physio-treatment.jpg',
+      image: getAssetUrl('assets/images/physio-treatment.jpg'),
       desc: "Dr. Santhosh Balaji's specialized hands-on protocol targeting the myofascial matrix, releasing deep muscle tension and chronic trigger points.",
       features: [
         'PAIN & STIFFNESS REDUCTION & JOINT MOBILIZATION',
@@ -18,7 +19,7 @@ export default function ServicesGrid() {
     {
       title: 'Electrotherapy, IFT, US & Wax Bath',
       badge: 'Electrotherapy',
-      image: '/assets/images/spine-care.jpg',
+      image: getAssetUrl('assets/images/spine-care.jpg'),
       desc: 'Appropriate electrotherapy modalities including Interferential Therapy (IFT), Ultrasound Therapy (US), Deep Heating, Wax Bath, TENS & Muscle Stimulation.',
       features: [
         'Interferential Therapy (IFT) & Ultrasound (US)',
@@ -30,7 +31,7 @@ export default function ServicesGrid() {
     {
       title: 'Stroke & Neuro Rehabilitation',
       badge: 'Neuro Care',
-      image: '/assets/images/clinic-room.jpg',
+      image: getAssetUrl('assets/images/clinic-room.jpg'),
       desc: 'Dedicated neurological physiotherapy helping stroke survivors and paralysis patients restore motor control, re-educate balance reflexes, and regain independent mobility.',
       features: [
         'Neuro Rehabilitation & Motor Re-Education',
@@ -42,7 +43,7 @@ export default function ServicesGrid() {
     {
       title: 'Fracture Rehabilitation & Joint Recovery',
       badge: 'Orthopedic',
-      image: '/assets/images/joint-mobility.jpg',
+      image: getAssetUrl('assets/images/joint-mobility.jpg'),
       desc: 'Structured progressive therapy following cast removal, surgical implants, and fractures. Eliminating joint contractures and rebuilding load-bearing bone and muscle strength.',
       features: [
         'Post-Cast Joint Mobilization',
@@ -54,7 +55,7 @@ export default function ServicesGrid() {
     {
       title: 'Sports Rehabilitation & Taping',
       badge: 'Sports & Athletic',
-      image: '/assets/images/sports-rehab.jpg',
+      image: getAssetUrl('assets/images/sports-rehab.jpg'),
       desc: "Athletic injury recovery for ligament tears, muscle sprains, tennis elbow, and runner's knee incorporating functional kinesiology taping and agility drills.",
       features: [
         'Sports Injury Recovery & Return-to-Play',
@@ -67,7 +68,7 @@ export default function ServicesGrid() {
       title: 'House Visits & Home Physiotherapy',
       badge: 'House Visits',
       badgeBg: '#2e9e44',
-      image: '/assets/images/geriatric-care.jpg',
+      image: getAssetUrl('assets/images/geriatric-care.jpg'),
       desc: 'Cannot travel to our clinic? Dr. Santhosh Balaji and our team provide dedicated house visits across Chennai for bedridden, elderly, and post-operative patients.',
       features: [
         'House Visits Undertaken at Your Home',

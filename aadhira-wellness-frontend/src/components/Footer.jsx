@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -14,7 +15,7 @@ export default function Footer() {
           <div className="footer-col-about">
             <div className="footer-logo-wrap">
               <Link to="/" onClick={scrollToTop}>
-                <img src="/assets/images/logo.png" alt="Aadhira Wellness Physio Rehab Center Logo" className="footer-logo" />
+                <img src={getAssetUrl('assets/images/logo.png')} alt="Aadhira Wellness Physio Rehab Center Logo" className="footer-logo" />
               </Link>
             </div>
             <p className="footer-bio">

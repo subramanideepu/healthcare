@@ -5,6 +5,7 @@ import DoctorProfile from '../components/DoctorProfile';
 import StatsStrip from '../components/StatsStrip';
 import PainChecker from '../components/PainChecker';
 import ClinicalPathway from '../components/ClinicalPathway';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -17,21 +18,21 @@ export default function HomePage() {
     {
       title: 'Myofascial Release (MFR) Therapy',
       badge: 'Core Specialty',
-      image: '/assets/images/physio-treatment.jpg',
+      image: getAssetUrl('assets/images/physio-treatment.jpg'),
       desc: "Dr. Santhosh Balaji's specialized hands-on protocol targeting the myofascial matrix, releasing deep muscle tension and chronic trigger points.",
       link: '/services'
     },
     {
       title: 'Electrotherapy, IFT, US & Wax Bath',
       badge: 'Electrotherapy',
-      image: '/assets/images/spine-care.jpg',
+      image: getAssetUrl('assets/images/spine-care.jpg'),
       desc: 'Appropriate electrotherapy modalities including Interferential Therapy (IFT), Ultrasound Therapy (US), Deep Heating, Wax Bath, TENS & Muscle Stimulation.',
       link: '/services'
     },
     {
       title: 'Stroke & Neuro Rehabilitation',
       badge: 'Neuro Care',
-      image: '/assets/images/clinic-room.jpg',
+      image: getAssetUrl('assets/images/clinic-room.jpg'),
       desc: 'Dedicated neurological physiotherapy helping stroke survivors and paralysis patients restore motor control, re-educate balance reflexes, and regain independent mobility.',
       link: '/services'
     }
@@ -108,7 +109,7 @@ export default function HomePage() {
 
             <div className="hero-media">
               <div className="hero-image-card">
-                <img src="/assets/images/hero-clinical.jpg" alt="Aadhira Wellness Physiotherapy Assessment in Chennai" />
+                <img src={getAssetUrl('assets/images/hero-clinical.jpg')} alt="Aadhira Wellness Physiotherapy Assessment in Chennai" />
               </div>
               <div className="floating-pill top-right">
                 <div className="pill-icon green">
