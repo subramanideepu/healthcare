@@ -1770,35 +1770,192 @@ button {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Multi-page Header Banner & Breadcrumbs
+   ========================================================================== */
+.page-header-banner {
+  background: var(--bg-navy-gradient);
+  color: #ffffff;
+  padding: 60px 0 50px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.page-banner-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.page-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 14px;
+}
+
+.page-breadcrumbs a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.page-breadcrumbs a:hover {
+  color: var(--clinical-green);
+}
+
+.page-breadcrumbs span.sep {
+  opacity: 0.5;
+}
+
+.page-banner-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.page-banner-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Doctor & Location Card Helper Classes
+   ========================================================================== */
+.about-doctor-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  border: 1px solid var(--border-color);
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-md);
+}
+
+.about-doctor-header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.about-doctor-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.doctor-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.location-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.location-actions .btn {
+  flex: 1;
+  justify-content: center;
+}
+
+.mobile-chevron {
+  display: none;
+}
+
+.mobile-drawer-contact {
+  display: none;
+}
+
+.mobile-backdrop {
+  display: none;
+}
+
+/* ==========================================================================
+   Global Mobile Resets
+   ========================================================================== */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 769px) {
+  .nav-mobile-cta {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Tablet Breakpoint (max-width: 1024px)
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
+    gap: 36px;
   }
   .hero-headline {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
   }
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .about-overlay-card {
+    position: static;
+    margin-top: 16px;
+    max-width: 100%;
   }
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
   }
   .pathway-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
   }
   .features-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
   }
   .booking-card-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .location-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px;
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1809,116 +1966,491 @@ button {
   }
 }
 
+/* ==========================================================================
+   Mobile Devices Breakpoint (max-width: 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
   .top-bar {
-    display: none;
+    display: none !important;
   }
+  
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-inner {
+    padding: 10px 0;
+  }
+  
+  .site-logo {
+    height: 44px;
+    max-width: 200px;
+  }
+  
+  .header-desktop-cta {
+    display: none !important;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--primary-navy);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .mobile-menu-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+  
+  /* Mobile Menu Drawer */
   .nav-menu {
     position: fixed;
-    top: 76px;
+    top: 64px;
     left: 0;
+    right: 0;
     width: 100%;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: #ffffff;
     flex-direction: column;
-    padding: 24px;
-    box-shadow: var(--shadow-lg);
-    border-bottom: 1px solid var(--border-color);
+    padding: 16px 18px 28px 18px;
+    box-shadow: 0 16px 36px rgba(15, 39, 68, 0.22);
+    border-bottom: 3px solid var(--clinical-blue);
     display: none;
+    z-index: 9999;
+    gap: 6px;
   }
-  .nav-menu.open {
+  
+  .nav-menu.open,
+  .nav-menu.active {
+    display: flex !important;
+  }
+  
+  .nav-link {
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 12px 14px;
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border-bottom: 1px solid #f1f5f9;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-navy);
+    text-decoration: none;
+    transition: var(--transition);
   }
-  .mobile-menu-toggle {
-    display: block;
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: var(--bg-subtle);
+    color: var(--clinical-blue);
+  }
+
+  .nav-link::after {
+    display: none !important;
+  }
+
+  .mobile-chevron {
+    display: block !important;
+    width: 18px;
+    height: 18px;
+    fill: #94a3b8;
+  }
+
+  .nav-mobile-cta {
+    display: inline-flex !important;
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px 16px;
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .mobile-backdrop {
+    display: block !important;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 39, 68, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+  }
+
+  .mobile-drawer-contact {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .mobile-contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background-color: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--primary-navy);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+  }
+
+  .mobile-contact-pill svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--clinical-blue);
+    flex-shrink: 0;
+  }
+
+  .mobile-contact-pill.whatsapp {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border-color: #c8e6c9;
+  }
+
+  .mobile-contact-pill.whatsapp svg {
+    fill: #2e7d32;
+  }
+
+  .mobile-contact-text {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    padding: 4px 4px 0 4px;
+  }
+
+  /* Hero Section Mobile */
+  .hero {
+    padding: 24px 0 32px 0;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   .hero-headline {
-    font-size: 2.2rem;
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 18px;
+  }
+  .hero-badges-strip {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .trust-badge-item {
+    width: 100%;
+  }
+  .hero-media {
+    margin-top: 8px;
+  }
+  .hero-image-card {
+    height: 240px;
+    border-radius: var(--radius-md);
+  }
+  .floating-pill {
+    display: none !important;
+  }
+
+  /* Quick Booking Form Mobile */
+  .quick-booking-bar {
+    margin-top: 20px;
+    padding: 16px 14px;
   }
   .quick-booking-form {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
+  .quick-booking-form .btn {
+    width: 100%;
+  }
+
+  /* Doctor Profile Card Mobile */
+  .doctor-profile-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 22px 16px;
+    gap: 16px;
+  }
+  .doctor-avatar-badge {
+    margin: 0 auto;
+  }
+  .doctor-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .doctor-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Stats Grid Mobile */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px;
+    padding: 20px 0;
+  }
+  .stat-number {
+    font-size: 2rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  .stat-item::after {
+    display: none !important;
+  }
+
+  /* Services Grid Mobile */
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
   }
-  .features-grid {
-    grid-template-columns: 1fr;
+  .service-thumb img {
+    height: 180px;
   }
-  .pathway-grid {
-    grid-template-columns: 1fr;
+  .service-body {
+    padding: 20px 16px;
   }
-  .form-grid-2 {
-    grid-template-columns: 1fr;
+
+  /* Assessment / Pain Checker Mobile */
+  .assessment-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-  .floating-pill {
+  .assessment-tabs::-webkit-scrollbar {
     display: none;
+  }
+  .assessment-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.82rem;
   }
   .condition-card {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px 14px;
   }
-}
+  .condition-visual {
+    height: 190px;
+  }
+  .condition-visual img {
+    height: 100%;
+  }
+  .treatment-highlights {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 
+  /* About Grid & About Page Mobile */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .about-main-img img {
+    height: 240px;
+  }
+  .about-pillars {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .about-overlay-card {
+    position: static;
+    margin-top: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .about-doctor-card {
+    padding: 22px 16px !important;
+  }
+  .about-doctor-header {
+    text-align: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .about-doctor-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .about-doctor-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 
-/* Multi-page Header Banner & Breadcrumbs */
-.page-header-banner {
-  background: var(--bg-navy-gradient);
-  color: #ffffff;
-  padding: 60px 0 50px 0;
-  position: relative;
-  overflow: hidden;
-}
-.page-header-banner::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.25) 0%, transparent 60%);
-  pointer-events: none;
-}
-.page-banner-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-}
-.page-breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 14px;
-}
-.page-breadcrumbs a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
-}
-.page-breadcrumbs a:hover {
-  color: var(--clinical-green);
-}
-.page-breadcrumbs span.sep {
-  opacity: 0.5;
-}
-.page-banner-title {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 12px;
-  color: #ffffff;
-}
-.page-banner-subtitle {
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
-}
-@media (max-width: 768px) {
+  /* Features Grid Mobile */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+  }
+  .feature-box {
+    padding: 20px 16px;
+  }
+
+  /* Pathway Steps Mobile */
+  .pathway-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .pathway-step {
+    padding: 20px 16px;
+  }
+
+  /* Booking Section & Form Mobile */
+  .booking-card-wrapper {
+    grid-template-columns: 1fr !important;
+    border-radius: var(--radius-md);
+  }
+  .booking-sidebar {
+    padding: 24px 16px !important;
+  }
+  .sidebar-title {
+    font-size: 1.4rem;
+  }
+  .sidebar-desc {
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+  }
+  .booking-form-container {
+    padding: 24px 16px !important;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Location Grid Mobile */
+  .location-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+  .location-info-card {
+    padding: 22px 16px !important;
+  }
+  .location-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .location-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .map-container {
+    height: 280px;
+  }
+  .map-card-overlay {
+    position: static;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  /* FAQ Mobile */
+  .faq-question {
+    padding: 14px 12px;
+    font-size: 0.92rem;
+  }
+  .faq-answer p {
+    padding: 0 12px 14px 12px;
+    font-size: 0.86rem;
+  }
+
+  /* Footer Mobile */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  /* Floating WhatsApp Mobile */
+  .floating-whatsapp {
+    bottom: 16px;
+    right: 14px;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+    z-index: 999;
+  }
+  .floating-whatsapp svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Page Header Banner Mobile */
   .page-header-banner {
-    padding: 40px 0 30px 0;
+    padding: 36px 0 28px 0;
   }
   .page-banner-title {
-    font-size: 1.85rem;
+    font-size: 1.7rem;
+  }
+  .page-banner-subtitle {
+    font-size: 0.92rem;
+  }
+}
+
+/* ==========================================================================
+   Small Mobile Devices (max-width: 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .hero-headline {
+    font-size: 1.6rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+    text-align: center;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .section {
+    padding: 40px 0;
+  }
+  .container {
+    padding: 0 12px;
+  }
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
   }
 }

@@ -159,7 +159,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
+          <div className="services-grid">
             {previewServices.map((svc, idx) => (
               <article className="service-card" key={idx}>
                 <div className="service-thumb">

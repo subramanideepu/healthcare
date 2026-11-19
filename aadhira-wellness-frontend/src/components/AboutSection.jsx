@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getAssetUrl } from '../utils/assetUrl';
 
 export default function AboutSection() {
@@ -60,9 +61,9 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <a href="#appointment" className="btn btn-primary">
+            <Link to="/contact" className="btn btn-primary">
               Schedule Clinical Consultation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

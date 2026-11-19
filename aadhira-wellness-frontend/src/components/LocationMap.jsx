@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LocationMap() {
   return (
@@ -65,22 +66,21 @@ export default function LocationMap() {
               </div>
             </div>
 
-            <div style={{ marginTop: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div className="location-actions">
               <a 
                 href="https://wa.me/919080309274?text=Hello%20Dr.%20Santhosh%20Balaji%2C%20I%20would%20like%20to%20get%20directions%20to%20Aadhira%20Wellness." 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn btn-green btn-sm" 
-                style={{ flex: 1, textDecoration: 'none', justifyContent: 'center' }}
               >
                 <svg style={{ width: '16px', height: '16px', fill: 'currentColor' }} viewBox="0 0 24 24">
                   <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
                 </svg>
                 WhatsApp Directions
               </a>
-              <a href="#appointment" className="btn btn-primary btn-sm" style={{ flex: 1, justifyContent: 'center' }}>
+              <Link to="/contact" className="btn btn-primary btn-sm">
                 Book Appointment
-              </a>
+              </Link>
             </div>
           </div>
 

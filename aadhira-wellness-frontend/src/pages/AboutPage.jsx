@@ -27,8 +27,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div style={{ background: '#ffffff', borderRadius: 'var(--radius-lg)', padding: '36px', border: '1px solid var(--border-color)', maxWidth: '900px', margin: '0 auto', boxShadow: 'var(--shadow-md)' }}>
-            <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '20px' }}>
+          <div className="about-doctor-card">
+            <div className="about-doctor-header">
               <div className="doctor-avatar-badge" style={{ width: '84px', height: '84px', fontSize: '1.75rem' }}>SB</div>
               <div>
                 <span className="doctor-specialty-tag" style={{ marginBottom: '6px' }}>Chief Physiotherapist & MFR Specialist</span>
@@ -47,7 +47,7 @@ export default function AboutPage() {
               Recognizing that patients with severe pain or mobility constraints cannot always travel to the clinic, Dr. Santhosh Balaji also provides dedicated <strong>House Visits</strong> across Chennai, bringing clinical expertise and portable electrotherapy modalities right to patients' homes.
             </p>
 
-            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+            <div className="about-doctor-actions">
               <Link to="/contact" className="btn btn-primary">
                 Book Consultation with Doctor
               </Link>
