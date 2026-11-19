@@ -1,6 +1,7 @@
 /* ==========================================================================
-   AADHIRA WELLNESS - REACT CLINICAL STYLESHEET
+   ADHIRA WELLNESS - DEMO 1: MODERN CLINICAL
    Palette: Navy Blue (#0F2744), Clinical Blue (#0066CC), Vibrant Green (#2E9E44), Pure White
+   Typography: Inter & Plus Jakarta Sans
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
@@ -48,6 +49,7 @@
   --max-width: 1240px;
 }
 
+/* Base Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -123,7 +125,7 @@ button {
 
 .section-header {
   text-align: center;
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto 50px auto;
 }
 
@@ -149,6 +151,12 @@ button {
   border-color: rgba(46, 158, 68, 0.2);
 }
 
+.section-badge.light {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
 .section-title {
   font-family: var(--font-heading);
   font-size: 2.3rem;
@@ -158,13 +166,21 @@ button {
   margin-bottom: 16px;
 }
 
+.section-navy .section-title {
+  color: #ffffff;
+}
+
 .section-subtitle {
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Buttons */
+.section-navy .section-subtitle {
+  color: #cbd5e1;
+}
+
+/* Button Styles */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -215,6 +231,17 @@ button {
   border-color: #cbd5e1;
 }
 
+.btn-outline-white {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline-white:hover {
+  background-color: #ffffff;
+  color: var(--primary-navy);
+}
+
 .btn-lg {
   padding: 14px 30px;
   font-size: 1.05rem;
@@ -225,7 +252,9 @@ button {
   font-size: 0.85rem;
 }
 
-/* Top bar */
+/* ==========================================================================
+   Top Header Announcement Bar
+   ========================================================================== */
 .top-bar {
   background-color: var(--navy-dark);
   color: #cbd5e1;
@@ -245,7 +274,7 @@ button {
 .top-bar-left, .top-bar-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -255,30 +284,20 @@ button {
   gap: 8px;
 }
 
+.top-bar-item a:hover {
+  color: #ffffff;
+}
+
 .top-bar-item svg {
   width: 14px;
   height: 14px;
   fill: var(--clinical-green);
-  flex-shrink: 0;
-}
-
-.house-visit-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(46, 158, 68, 0.18);
-  color: #4ade80;
-  padding: 3px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 700;
-  border: 1px solid rgba(74, 222, 128, 0.4);
 }
 
 .social-links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .social-link {
@@ -305,7 +324,9 @@ button {
   fill: currentColor;
 }
 
-/* Header & Nav */
+/* ==========================================================================
+   Main Navigation Header
+   ========================================================================== */
 .site-header {
   background-color: #ffffff;
   position: sticky;
@@ -322,6 +343,11 @@ button {
   padding: 12px 0;
 }
 
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .site-logo {
   height: 52px;
   width: auto;
@@ -332,19 +358,42 @@ button {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 28px;
 }
 
 .nav-link {
   font-weight: 600;
-  font-size: 0.94rem;
+  font-size: 0.95rem;
   color: var(--primary-navy);
   padding: 6px 0;
   position: relative;
 }
 
-.nav-link:hover {
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--clinical-blue);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
   color: var(--clinical-blue);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .mobile-menu-toggle {
@@ -355,11 +404,20 @@ button {
   color: var(--primary-navy);
 }
 
-/* Hero Section */
+.mobile-menu-toggle svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
 .hero {
   position: relative;
   background: linear-gradient(135deg, #ffffff 0%, #f1f6fc 100%);
-  padding: 65px 0 55px 0;
+  padding: 70px 0 60px 0;
+  overflow: hidden;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -370,13 +428,18 @@ button {
   align-items: center;
 }
 
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-headline {
   font-family: var(--font-heading);
-  font-size: 3rem;
+  font-size: 3.1rem;
   font-weight: 800;
   line-height: 1.18;
   color: var(--primary-navy);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   letter-spacing: -0.5px;
 }
 
@@ -389,17 +452,18 @@ button {
 }
 
 .hero-description {
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   color: var(--text-secondary);
   line-height: 1.65;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
+  max-width: 580px;
 }
 
 .hero-ctas {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 34px;
+  margin-bottom: 36px;
   flex-wrap: wrap;
 }
 
@@ -407,7 +471,7 @@ button {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding-top: 22px;
+  padding-top: 24px;
   border-top: 1px solid var(--border-color);
   flex-wrap: wrap;
 }
@@ -423,10 +487,10 @@ button {
   height: 36px;
   border-radius: 50%;
   background-color: var(--clinical-green-light);
-  color: var(--clinical-green);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--clinical-green);
   flex-shrink: 0;
 }
 
@@ -443,6 +507,10 @@ button {
   color: var(--text-muted);
 }
 
+.hero-media {
+  position: relative;
+}
+
 .hero-image-card {
   position: relative;
   border-radius: var(--radius-lg);
@@ -453,14 +521,70 @@ button {
 
 .hero-image-card img {
   width: 100%;
-  height: 470px;
+  height: 480px;
   object-fit: cover;
   display: block;
 }
 
-/* Quick booking bar */
+.floating-pill {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+}
+
+.floating-pill.top-right {
+  top: 24px;
+  right: -15px;
+  border-left: 4px solid var(--clinical-green);
+}
+
+.floating-pill.bottom-left {
+  bottom: 24px;
+  left: -15px;
+  border-left: 4px solid var(--clinical-blue);
+}
+
+.pill-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.pill-icon.green {
+  background-color: var(--clinical-green-light);
+  color: var(--clinical-green);
+}
+
+.pill-icon.blue {
+  background-color: var(--clinical-blue-light);
+  color: var(--clinical-blue);
+}
+
+.pill-content h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 2px;
+}
+
+.pill-content p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Quick Appointment Booking Strip */
 .quick-booking-bar {
-  margin-top: 36px;
+  margin-top: 40px;
   background-color: #ffffff;
   border-radius: var(--radius-lg);
   padding: 24px;
@@ -507,61 +631,9 @@ button {
   box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
 }
 
-/* Doctor Profile Banner */
-.doctor-profile-card {
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-md);
-  padding: 30px;
-  margin-top: 36px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 24px;
-  align-items: center;
-}
-
-.doctor-avatar-badge {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background: var(--clinical-blue-light);
-  color: var(--clinical-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.5rem;
-  border: 2px solid var(--clinical-blue);
-}
-
-.doctor-info-text h3 {
-  font-size: 1.35rem;
-  color: var(--primary-navy);
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.doctor-credentials {
-  font-size: 0.9rem;
-  color: var(--clinical-blue);
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.doctor-specialty-tag {
-  display: inline-block;
-  background: var(--clinical-green-light);
-  color: var(--clinical-green);
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(46, 158, 68, 0.3);
-  margin-bottom: 6px;
-}
-
-/* Clinical stats */
+/* ==========================================================================
+   Clinical Stats Strip
+   ========================================================================== */
 .stats-strip {
   background-color: var(--primary-navy);
   color: #ffffff;
@@ -610,7 +682,9 @@ button {
   font-weight: 500;
 }
 
-/* Pain assessment */
+/* ==========================================================================
+   Interactive Pain Assessment Tool (Condition Checker)
+   ========================================================================== */
 .assessment-tool {
   background-color: #ffffff;
   border-radius: var(--radius-lg);
@@ -645,6 +719,15 @@ button {
   background-color: var(--clinical-blue);
   color: #ffffff;
   border-color: var(--clinical-blue);
+}
+
+.assessment-panel {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.assessment-panel.active {
+  display: block;
 }
 
 .condition-card {
@@ -706,7 +789,9 @@ button {
   flex-shrink: 0;
 }
 
-/* About Us */
+/* ==========================================================================
+   About Us Section
+   ========================================================================== */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -744,11 +829,40 @@ button {
   border-left: 4px solid var(--clinical-green);
 }
 
+.about-overlay-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.about-overlay-card p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.about-content .section-title {
+  text-align: left;
+}
+
+.about-lead {
+  font-size: 1.1rem;
+  color: var(--clinical-blue);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.about-text {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
 .about-pillars {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin: 24px 0 30px 0;
+  margin-bottom: 30px;
 }
 
 .pillar-box {
@@ -774,7 +888,14 @@ button {
   fill: var(--clinical-green);
 }
 
-/* Services Grid */
+.pillar-box p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Services Section
+   ========================================================================== */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -811,6 +932,10 @@ button {
   transition: transform 0.4s ease;
 }
 
+.service-card:hover .service-thumb img {
+  transform: scale(1.05);
+}
+
 .service-badge {
   position: absolute;
   top: 14px;
@@ -821,6 +946,7 @@ button {
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 600;
+  backdrop-filter: blur(4px);
 }
 
 .service-body {
@@ -891,11 +1017,19 @@ button {
   gap: 4px;
 }
 
-/* Pathway */
+.service-link:hover {
+  color: var(--clinical-blue-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Clinical Pathway / Roadmap
+   ========================================================================== */
 .pathway-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  position: relative;
 }
 
 .pathway-step {
@@ -904,6 +1038,7 @@ button {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
+  position: relative;
   transition: var(--transition);
 }
 
@@ -927,7 +1062,27 @@ button {
   margin-bottom: 16px;
 }
 
-/* Why choose us */
+.pathway-step:nth-child(4) .step-number {
+  background-color: var(--clinical-green-light);
+  color: var(--clinical-green);
+}
+
+.step-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Why Choose Us Section
+   ========================================================================== */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -961,13 +1116,37 @@ button {
   margin-bottom: 20px;
 }
 
+.feature-box:nth-child(2) .feature-icon-wrapper {
+  background: var(--clinical-green-light);
+  color: var(--clinical-green);
+}
+
 .feature-icon-wrapper svg {
   width: 28px;
   height: 28px;
   fill: currentColor;
 }
 
-/* Booking form */
+.feature-box h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   Appointment Enquiry Form Section
+   ========================================================================== */
+.booking-section {
+  position: relative;
+}
+
 .booking-card-wrapper {
   background-color: #ffffff;
   border-radius: var(--radius-lg);
@@ -987,6 +1166,87 @@ button {
   justify-content: space-between;
 }
 
+.sidebar-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  line-height: 1.25;
+}
+
+.sidebar-desc {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.sidebar-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.perk-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: rgba(46, 158, 68, 0.25);
+  color: var(--clinical-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.perk-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+}
+
+.perk-text h6 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.perk-text p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.direct-help-box {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 16px;
+  border-radius: var(--radius-md);
+}
+
+.direct-help-box h5 {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.direct-help-box .phone-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .booking-form-container {
   padding: 44px 40px;
 }
@@ -999,6 +1259,7 @@ button {
 }
 
 .form-group-full {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1018,6 +1279,12 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+}
+
+.pain-scale-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--primary-navy);
 }
 
 .pain-scale-val {
@@ -1044,7 +1311,9 @@ button {
   margin-top: 4px;
 }
 
-/* Location and Maps */
+/* ==========================================================================
+   Google Maps & Location Section
+   ========================================================================== */
 .location-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -1061,6 +1330,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.contact-detail-group {
+  margin-bottom: 24px;
 }
 
 .contact-detail-item {
@@ -1088,6 +1361,20 @@ button {
   fill: currentColor;
 }
 
+.contact-text-content h6 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.contact-text-content p,
+.contact-text-content a {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+}
+
 .timings-badge-list {
   background-color: var(--bg-subtle);
   border-radius: var(--radius-md);
@@ -1101,6 +1388,16 @@ button {
   justify-content: space-between;
   font-size: 0.85rem;
   padding: 4px 0;
+}
+
+.timing-day {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.timing-hours {
+  color: var(--primary-navy);
+  font-weight: 600;
 }
 
 .map-container {
@@ -1133,7 +1430,22 @@ button {
   z-index: 2;
 }
 
-/* FAQ */
+.map-card-overlay h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 4px;
+}
+
+.map-card-overlay p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   FAQ Section
+   ========================================================================== */
 .faq-container {
   max-width: 800px;
   margin: 0 auto;
@@ -1164,6 +1476,11 @@ button {
   font-weight: 600;
   color: var(--primary-navy);
   text-align: left;
+  background-color: transparent;
+}
+
+.faq-question:hover {
+  color: var(--clinical-blue);
 }
 
 .faq-icon {
@@ -1175,19 +1492,32 @@ button {
   transition: transform 0.25s ease;
 }
 
+.faq-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 .faq-item.active .faq-icon {
   transform: rotate(180deg);
   color: var(--clinical-blue);
 }
 
 .faq-answer {
+  display: none;
   padding: 0 24px 20px 24px;
   font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
 
-/* Footer */
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 .site-footer {
   background-color: var(--navy-dark);
   color: #cbd5e1;
@@ -1200,6 +1530,11 @@ button {
   grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
   gap: 40px;
   margin-bottom: 50px;
+}
+
+.footer-col-about {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-logo-wrap {
@@ -1218,8 +1553,43 @@ button {
   object-fit: contain;
 }
 
+.footer-bio {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-col h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background-color: var(--clinical-green);
+}
+
 .footer-links li {
   margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .footer-links a:hover {
@@ -1256,7 +1626,17 @@ button {
   gap: 12px;
 }
 
-/* Floating WhatsApp Button */
+.footer-bottom a {
+  color: #94a3b8;
+}
+
+.footer-bottom a:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Floating WhatsApp Button
+   ========================================================================== */
 .floating-whatsapp {
   position: fixed;
   bottom: 28px;
@@ -1279,6 +1659,7 @@ button {
 .floating-whatsapp:hover {
   background-color: #1eb956;
   transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
   color: #ffffff;
 }
 
@@ -1288,17 +1669,23 @@ button {
   fill: #ffffff;
 }
 
-/* Modal */
+/* ==========================================================================
+   Modal Dialog
+   ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(4px);
   z-index: 2000;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+
+.modal-backdrop.active {
+  display: flex;
   animation: fadeIn 0.25s ease-out;
 }
 
@@ -1323,6 +1710,12 @@ button {
   padding: 6px;
 }
 
+.modal-close-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
 .modal-icon-success {
   width: 64px;
   height: 64px;
@@ -1335,6 +1728,27 @@ button {
   margin: 0 auto 20px auto;
 }
 
+.modal-icon-success svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 10px;
+}
+
+.modal-message {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
 .modal-booking-ref {
   background-color: var(--bg-subtle);
   border: 1px dashed var(--border-color);
@@ -1343,31 +1757,62 @@ button {
   font-weight: 700;
   color: var(--clinical-blue);
   font-size: 1.1rem;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: inline-block;
 }
 
+/* ==========================================================================
+   Animations
+   ========================================================================== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
 @media (max-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .pathway-grid { grid-template-columns: repeat(2, 1fr); }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .booking-card-wrapper { grid-template-columns: 1fr; }
-  .location-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .stat-item:nth-child(2)::after { display: none; }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-headline {
+    font-size: 2.6rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pathway-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .booking-card-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .stat-item:nth-child(2)::after {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
-  .top-bar { display: none; }
+  .top-bar {
+    display: none;
+  }
   .nav-menu {
     position: fixed;
     top: 76px;
@@ -1377,18 +1822,42 @@ button {
     flex-direction: column;
     padding: 24px;
     box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--border-color);
     display: none;
   }
-  .nav-menu.open { display: flex; }
-  .mobile-menu-toggle { display: block; }
-  .hero-headline { font-size: 2.2rem; }
-  .quick-booking-form { grid-template-columns: 1fr; }
-  .services-grid { grid-template-columns: 1fr; }
-  .features-grid { grid-template-columns: 1fr; }
-  .pathway-grid { grid-template-columns: 1fr; }
-  .form-grid-2 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .condition-card { grid-template-columns: 1fr; }
+  .nav-menu.open {
+    display: flex;
+  }
+  .mobile-menu-toggle {
+    display: block;
+  }
+  .hero-headline {
+    font-size: 2.2rem;
+  }
+  .quick-booking-form {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .pathway-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .floating-pill {
+    display: none;
+  }
+  .condition-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 

@@ -146,8 +146,8 @@ export default function AppointmentForm({ prefillData }) {
 
               <div className="sidebar-perks">
                 <div className="perk-item">
-                  <div className="perk-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <div className="perk-icon" style={{ width: '24px', height: '24px', minWidth: '24px', borderRadius: '50%', backgroundColor: 'rgba(46, 158, 68, 0.25)', color: '#2e9e44', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <svg style={{ width: '13px', height: '13px', fill: 'currentColor' }} viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                   </div>
                   <div className="perk-text">
                     <h6>20-Min Thorough Clinical Evaluation</h6>
@@ -156,8 +156,8 @@ export default function AppointmentForm({ prefillData }) {
                 </div>
 
                 <div className="perk-item">
-                  <div className="perk-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <div className="perk-icon" style={{ width: '24px', height: '24px', minWidth: '24px', borderRadius: '50%', backgroundColor: 'rgba(46, 158, 68, 0.25)', color: '#2e9e44', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <svg style={{ width: '13px', height: '13px', fill: 'currentColor' }} viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                   </div>
                   <div className="perk-text">
                     <h6>House Visits Available</h6>
@@ -166,8 +166,8 @@ export default function AppointmentForm({ prefillData }) {
                 </div>
 
                 <div className="perk-item">
-                  <div className="perk-icon">
-                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <div className="perk-icon" style={{ width: '24px', height: '24px', minWidth: '24px', borderRadius: '50%', backgroundColor: 'rgba(46, 158, 68, 0.25)', color: '#2e9e44', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <svg style={{ width: '13px', height: '13px', fill: 'currentColor' }} viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                   </div>
                   <div className="perk-text">
                     <h6>Direct WhatsApp Confirmation</h6>
