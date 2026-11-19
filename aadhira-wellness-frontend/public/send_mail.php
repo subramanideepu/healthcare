@@ -201,8 +201,70 @@ $leads_data[] = [
 ];
 file_put_contents($backup_file, json_encode($leads_data, JSON_PRETTY_PRINT));
 
-// Send email (suppress errors if local mail server is not configured in Laragon, still return success)
-$mail_sent = @mail($to_email, $subject, $message, $headers);
+// Direct SMTP Sender via Hostinger SSL
+function send_smtp_direct($to, $subject, $htmlBody, $replyTo = null) {
+    $host = "ssl://smtp.hostinger.com";
+    $port = 465;
+    $user = "info@aadhirawellness.com";
+    $pass = "Drr*AXYJtE=N8+Vu";
+
+    $socket = @fsockopen($host, $port, $errno, $errstr, 12);
+    if (!$socket) {
+        return false;
+    }
+
+    fgets($socket);
+    fputs($socket, "EHLO localhost\r\n");
+    while ($line = fgets($socket)) {
+        if (substr($line, 3, 1) === ' ') break;
+    }
+
+    fputs($socket, "AUTH LOGIN\r\n");
+    fgets($socket);
+    fputs($socket, base64_encode($user) . "\r\n");
+    fgets($socket);
+    fputs($socket, base64_encode($pass) . "\r\n");
+    $authRes = fgets($socket);
+    if (strpos($authRes, '235') === false) {
+        fclose($socket);
+        return false;
+    }
+
+    fputs($socket, "MAIL FROM: <$user>\r\n");
+    fgets($socket);
+    fputs($socket, "RCPT TO: <$to>\r\n");
+    fgets($socket);
+    fputs($socket, "DATA\r\n");
+    fgets($socket);
+
+    $headers = [
+        "From: Aadhira Wellness <$user>",
+        "To: <$to>",
+        "Subject: " . $subject,
+        "MIME-Version: 1.0",
+        "Content-Type: text/html; charset=UTF-8",
+        "X-Mailer: Aadhira Wellness SMTP Engine",
+        "Date: " . date('r')
+    ];
+    if ($replyTo) {
+        $headers[] = "Reply-To: <$replyTo>";
+    }
+
+    $emailData = implode("\r\n", $headers) . "\r\n\r\n" . $htmlBody . "\r\n.\r\n";
+    fputs($socket, $emailData);
+    $dataRes = fgets($socket);
+
+    fputs($socket, "QUIT\r\n");
+    fclose($socket);
+
+    return (strpos($dataRes, '250') !== false);
+}
+
+// Send email via Hostinger SMTP with fallback to native mail()
+$mail_sent = send_smtp_direct($to_email, $subject, $message, $patient_email);
+if (!$mail_sent) {
+    $mail_sent = @mail($to_email, $subject, $message, $headers);
+}
 
 echo json_encode([
     "success"      => true,
