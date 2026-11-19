@@ -1,44 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import StatsStrip from './components/StatsStrip';
-import PainChecker from './components/PainChecker';
-import AboutSection from './components/AboutSection';
-import ServicesGrid from './components/ServicesGrid';
-import ClinicalPathway from './components/ClinicalPathway';
-import WhyChooseUs from './components/WhyChooseUs';
-import AppointmentForm from './components/AppointmentForm';
-import LocationMap from './components/LocationMap';
-import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import ScrollToTop from './components/ScrollToTop';
+
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
 
 export default function App() {
-  const [quickData, setQuickData] = useState(null);
-
-  const handleQuickSelect = (data) => {
-    setQuickData(data);
-  };
+  // Support both local root and GitHub Pages subpath (/healthcare/)
+  const basename = window.location.pathname.startsWith('/healthcare') ? '/healthcare' : '/';
 
   return (
-    <div className="site-wrapper">
-      <TopBar />
-      <Navbar />
-      <main>
-        <Hero onQuickSelect={handleQuickSelect} />
-        <StatsStrip />
-        <PainChecker />
-        <AboutSection />
-        <ServicesGrid />
-        <ClinicalPathway />
-        <WhyChooseUs />
-        <AppointmentForm prefillData={quickData} />
-        <LocationMap />
-        <FAQSection />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
+    <BrowserRouter basename={basename}>
+      <ScrollToTop />
+      <div className="site-wrapper">
+        <TopBar />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
+      </div>
+    </BrowserRouter>
   );
 }

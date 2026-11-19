@@ -4,8 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aadhira Wellness | Physio • Rehab Center | Chennai</title>
-    <meta name="description" content="Aadhira Wellness Physio & Rehab Center in Kundrathur, Chennai led by Dr. Santhosh Balaji .K. Specialized in Myofascial Release (MFR) Therapy, stroke, fracture & sports rehabilitation. House visits undertaken." />
+    <meta name="description" content="Aadhira Wellness Physio & Rehab Center in Kundrathur, Chennai led by Dr. Santhosh Balaji .K (BPT MIAP KTP). Specialized in Myofascial Release (MFR) Therapy, stroke, fracture & sports rehabilitation. House visits undertaken." />
     <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+    <!-- SPA redirect decoder for GitHub Pages -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>

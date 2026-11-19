@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -8,7 +13,9 @@ export default function Footer() {
           {/* Col 1: Logo & Mission */}
           <div className="footer-col-about">
             <div className="footer-logo-wrap">
-              <img src="/assets/images/logo.png" alt="Aadhira Wellness Physio Rehab Center Logo" className="footer-logo" />
+              <Link to="/" onClick={scrollToTop}>
+                <img src="/assets/images/logo.png" alt="Aadhira Wellness Physio Rehab Center Logo" className="footer-logo" />
+              </Link>
             </div>
             <p className="footer-bio">
               <strong>AADHIRA WELLNESS: Recover • Rehab • Rejoice</strong><br />
@@ -27,32 +34,30 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Clinical Services */}
+          {/* Col 2: Services */}
           <div className="footer-col">
-            <h5>Core Services</h5>
+            <h5>Our Services</h5>
             <ul className="footer-links">
-              <li><a href="#services">Myofascial Release (MFR)</a></li>
-              <li><a href="#services">Interferential Therapy (IFT)</a></li>
-              <li><a href="#services">Ultrasound & Deep Heat</a></li>
-              <li><a href="#services">Wax Bath & TENS</a></li>
-              <li><a href="#services">Stroke Rehabilitation</a></li>
-              <li><a href="#services">Fracture Rehabilitation</a></li>
-              <li><a href="#services">Sports Rehab & Taping</a></li>
-              <li><a href="#services">House Visits Undertaken</a></li>
+              <li><Link to="/services" onClick={scrollToTop}>Myofascial Release (MFR)</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Interferential Therapy (IFT)</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Ultrasound & Deep Heat</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Wax Bath & TENS</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Stroke Rehabilitation</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Fracture Rehabilitation</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Sports Rehab & Taping</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>House Visits Undertaken</Link></li>
             </ul>
           </div>
 
-          {/* Col 3: Quick Links */}
+          {/* Col 3: Navigation Pages */}
           <div className="footer-col">
-            <h5>Quick Links</h5>
+            <h5>Navigation</h5>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#doctor">Dr. Santhosh Balaji Profile</a></li>
-              <li><a href="#assessment">Pain Checker</a></li>
-              <li><a href="#about">About Aadhira Wellness</a></li>
-              <li><a href="#why-choose-us">Why Choose Us</a></li>
-              <li><a href="#appointment">Book Appointment</a></li>
-              <li><a href="#contact">Clinic Map & Directions</a></li>
+              <li><Link to="/" onClick={scrollToTop}>Home</Link></li>
+              <li><Link to="/about" onClick={scrollToTop}>About Us</Link></li>
+              <li><Link to="/services" onClick={scrollToTop}>Our Services</Link></li>
+              <li><Link to="/contact" onClick={scrollToTop}>Contact Us & Location</Link></li>
+              <li><Link to="/contact" onClick={scrollToTop}>Book Appointment</Link></li>
             </ul>
           </div>
 
