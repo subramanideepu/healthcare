@@ -69,8 +69,8 @@ $wa_message = rawurlencode(
     "We have received your appointment request (Ref: {$reference_id}) for {$department}. We are pleased to confirm your slot!"
 );
 
-// Email Subject
-$subject = "🏥 New Patient Enquiry: {$patient_name} - {$visit_type} [{$reference_id}]";
+// Email Subject (clean text without emojis)
+$subject = "New Patient Enquiry: {$patient_name} - {$visit_type} [{$reference_id}]";
 
 // HTML Email Body
 $message = '
@@ -159,8 +159,8 @@ $message .= '
       </table>
 
       <div style="margin-top: 24px; text-align: center;">
-        <a href="tel:' . htmlspecialchars($patient_phone) . '" class="btn btn-call" style="color:#ffffff;">📞 Call Patient (' . htmlspecialchars($patient_phone) . ')</a>
-        <a href="https://wa.me/' . $wa_phone . '?text=' . $wa_message . '" class="btn btn-wa" style="color:#ffffff;">💬 Chat on WhatsApp</a>
+        <a href="tel:' . htmlspecialchars($patient_phone) . '" class="btn btn-call" style="color:#ffffff;">Call Patient (' . htmlspecialchars($patient_phone) . ')</a>
+        <a href="https://wa.me/' . $wa_phone . '?text=' . $wa_message . '" class="btn btn-wa" style="color:#ffffff;">Chat on WhatsApp</a>
       </div>
     </div>
     <div class="footer">
